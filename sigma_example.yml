@@ -1,0 +1,13 @@
+title: Suspicious PowerShell from Explorer
+description: Detects when explorer.exe launches PowerShell or CMD.
+author: Shobande Wariz Ayobami
+logsource:
+  product: windows
+detection:
+  selection:
+    ParentImage|contains: '\explorer.exe'
+    Image|endswith:
+      - '\powershell.exe'
+      - '\cmd.exe'
+  condition: selection
+level: high
